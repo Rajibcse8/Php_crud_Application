@@ -14,7 +14,7 @@
 
           $query=  "INSERT INTO student(stname,regno) VALUES('$sname','$sreg')";
           
-          if($query){echo"HIIII";}
+          if($query)
           $create_query=mysqli_query($conn,$query);
            
       }
@@ -23,6 +23,9 @@
     }
    
    ?>
+
+
+
 
 
 
@@ -56,15 +59,50 @@
       
   </div>
 
+
+
+
+
   <div class="cointainer">
      
      <table class="table table-bordered">
      <tr>
+     <th>std id</th>
+     <th>std name</th>
+     <th>reg</th>
+     <th></th>
+     <th></th>
      
-     
-     
+     </tr> 
+
+    
+     <?php
+
+
+$query ="SELECT * FROM student";
+$read_q=mysqli_query($conn,$query);
+
+if($read_q->num_rows>0){
+
+   while ($rd =mysqli_fetch_assoc($read_q)){
+
+       $sid=$rd['id'];
+       $sn=$rd['stname'];
+       $r=$rd['regno'];
+
+
+
+       ?>
+
+     <tr>
+        <td><?php echo $sid;  ?></td>
+        <td><?php echo $sn;  ?></td>
+        <td><?php  echo $r;  ?> </td>
+        <td></td>
+        <td></td>
+
      </tr>
-         
+         <?php }} ?>
      </table>
       
   </div>
